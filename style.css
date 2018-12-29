@@ -29,6 +29,16 @@ h3{
 	box-shadow: 1px 1px 0.5px grey;
 }
 
+#boite{
+
+	width: 70%;
+	margin: auto;
+	padding: 10px 10px;
+	display: flex;
+	align-content: center;
+	justify-content: space-between;
+}
+
 a{
 	font-size: 0.80em;
 	text-decoration: none;
