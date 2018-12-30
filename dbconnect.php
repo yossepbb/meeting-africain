@@ -6,6 +6,7 @@
 		try{
 
 			$bdd = new PDO('mysql:host=localhost;dbname=projet;charset=utf8', 'root', '');
+			echo "connexion etablie";
 		}
 
 		catch(Exception $e)
@@ -17,4 +18,4 @@
 		return $bdd;
 	}
 
- ?>
+?>

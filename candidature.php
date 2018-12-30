@@ -1,7 +1,4 @@
 
-<!-- OBJECTIFS -->
-<!-- Afficher les 5 derniers tickets  -->
-
 <!DOCTYPE html >
 <html>
 	<head>
@@ -47,20 +44,25 @@
 
 		$ticket -> closeCursor(); // on libere le curseur pour la prochaine requete
 
+
 		// on recupere les candidatures associées au ticket
 		$resp = $db -> prepare('SELECT ticket_id, author, qualifications, experiences, DATE_FORMAT(date_disponibilité, \'%d/%m/%y\') As candidature_date FROM candidatures WHERE ticket_id= ?');
 
 
+         ?><h2 style="background-color: black; color: white;">Candidatures</h2><?php
+
 		$resp -> execute(array($_GET['ticket']));
 
-		$data = $resp -> fetch()
-		
+		while ($data = $resp -> fetch())
+
+		{
+
 			?>
             <div class="candidatures">
-            	<h2 style="background-color: black; color: white;">Candidatures</h2>
                 <h3>
                     <?= htmlspecialchars($data['author']) ?>
                     <em>le <?= $data['candidature_date'] ?></em>
+                    <em>ticket_id= <?= $data['ticket_id'] ?></em>
                 </h3>
                 
                 <p>
@@ -69,18 +71,19 @@
                 </p>
             </div>
         <?php
+			
+		}
+			
         $resp -> closeCursor();
+
 		?>
 		
 		<hr>
 
-		<h3><input class= "btn btn-primary" type="button" onClick="bascule('boite');" value="Postuler" href></h3>
-
-		
-		<?= include('form.php') ?>
+		<a href="candidature_post.php?ticket=<?php echo $_GET['ticket']; ?>">Postuler</a>
 		
 		<script type="text/javascript" src="form.js">
-			
+
 		</script>
 	</body>
 </html>
