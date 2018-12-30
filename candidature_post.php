@@ -11,6 +11,7 @@
 			die('Error:' . $e -> getMessage());
 		}
 
+
 	// on verifie que les champs ont bien ete remplis
 		if ( isset($_POST['author']) AND isset($_POST['qualifications']) AND isset($_POST['experiences']) AND isset($_POST['date_disponibilité']))
 		{
